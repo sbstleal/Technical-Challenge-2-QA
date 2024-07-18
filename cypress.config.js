@@ -1,14 +1,12 @@
-const { defineConfig } = require('cypress');
+const { defineConfig } = require("cypress");
+const { allureCypress } = require("allure-cypress/reporter");
 
 module.exports = defineConfig({
+  chromeWebSecurity: false,
   e2e: {
-    baseUrl: 'https://www.saucedemo.com',
+    baseUrl: "https://www.saucedemo.com",
     setupNodeEvents(on, config) {
-      // implement node event listeners here
+      allureCypress(on);
     },
-    viewportWidth: 1200,
-    viewportHeight: 800,
-    pageLoadTimeout: 120000, // Aumentar o timeout para evitar problemas de carregamento
-    supportFile: 'cypress/support/commands.js', // Configuração do arquivo de suporte
   },
 });
